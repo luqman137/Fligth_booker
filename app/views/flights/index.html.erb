@@ -11,27 +11,25 @@
     <%= submit_tag "Search" %>
 <% end %>
 
- <table class="table", style="text-align: left; " >
-  <thead class="thead-dark">
-    <th scope="col">Flight Number </th>               
-    <th scope="col">Duration</th>                     
-    <th scope="col">Time</th>
-    <th scope="col">From</th>
-    <th scope="col">To</th>
+ <table class="table" >
+  <thead>
+     <th scope="col">Flight Number </th>               
+     <th scope="col">Time</th>
+     <th scope="col">Duration</th>                     
+     <th scope="col">From</th>
+     <th scope="col">To</th>
   </thead>
-   <tbody>
+   
+  <tr>
     <% @flights.each do |flight| %>
-  <tr scope="row">
-  
-    <td><%= flight.id %></td>         
-    <td> <%= flight.duration %></td><td>     
-    <td> <%= flight.date_time %></td>  
-    <td> <%= flight.departure_airport.code %></td> 
-    <td> <%= flight.arrival_airport.code %></td>  
-    <td><%= link_to "Book now", new_booking_path(@flights, flight_id: flight.id), class: 'btn btn-default btn-lg' %></td>
-  
-  </tr>
-   </tbody>
-  <% end %>
+      <td><%= flight.id %></td> 
+      <td> <%= flight.date_time %></td>          
+      <td> <%= flight.duration %><p>Hours</p></td>    
+      <td> <%= flight.departure_airport.code %></td> 
+      <td> <%= flight.arrival_airport.code %></td>  
+  <td><%= link_to "Book now", new_booking_path(@flights, flight_id: flight.id), class: 'btn btn-default btn-lg' %></td>
+    
+  </tr> 
+ <% end %>
  </table>
 <%#= link_to "Book now", new_booking_path(@flight) %>
