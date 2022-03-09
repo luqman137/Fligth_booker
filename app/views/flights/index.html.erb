@@ -1,0 +1,37 @@
+<h1>Registered Flights</h1>
+
+<% if current_user %>
+    <p> hello <%= current_user.email%>!</p>
+<% end %>
+<%= form_with(model: @flight, method: :get) do  %>
+ 
+    <%= select_tag("From", options_for_select( Airport.all.collect { |p| [ p.code, p.id ]})) %>
+    <%= select_tag("To", options_for_select( Airport.all.collect { |p| [ p.code, p.id ]})) %>
+   
+    <%= submit_tag "Search" %>
+<% end %>
+
+ <table class="table", style="text-align: left; " >
+  <thead class="thead-dark">
+    <th scope="col">Flight Number </th>               
+    <th scope="col">Duration</th>                     
+    <th scope="col">Time</th>
+    <th scope="col">From</th>
+    <th scope="col">To</th>
+  </thead>
+   <tbody>
+    <% @flights.each do |flight| %>
+  <tr scope="row">
+  
+    <td><%= flight.id %></td>         
+    <td> <%= flight.duration %></td><td>     
+    <td> <%= flight.date_time %></td>  
+    <td> <%= flight.departure_airport.code %></td> 
+    <td> <%= flight.arrival_airport.code %></td>  
+    <td><%= link_to "Book now", new_booking_path(@flights, flight_id: flight.id), class: 'btn btn-default btn-lg' %></td>
+  
+  </tr>
+   </tbody>
+  <% end %>
+ </table>
+<%#= link_to "Book now", new_booking_path(@flight) %>

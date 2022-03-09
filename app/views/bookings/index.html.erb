@@ -1,0 +1,23 @@
+<h3>Booking Details </h3>
+
+<table class="table table-sm table-striped ml-10" style="max-width: 20rem;>
+  <tr class="thead-dark">
+    <th>Booking number </th>               
+    <th> price</th>                     
+    <th>              From </th>
+    <th>  To </th>
+    <th>  Duration </th>
+     <th>  passanger </th>
+  </tr>
+    <% @booking.each do |b| %>
+  <tr >
+    <td><%= b.id %></td>         
+    <td> <%= b.price %></td><td>     
+    <td> <%= b.flight.arrival_airport.code %></td>  
+    <td> <%= b.flight.departure_airport.code %></td> 
+    <td> <%= b.flight.duration %></td>  
+    <td> <%= b.passanger.name  %></td>  
+  </tr>
+  
+  <% end %>
+ </table>

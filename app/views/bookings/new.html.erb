@@ -1,0 +1,16 @@
+
+
+<%= form_with model: @booking do |f| %>
+  Booking Price: <%= f.text_field :price %><br />
+  passanger ID: <%= f.number_field :passanger_id %><br />
+ <%= f.hidden_field :flight_id %>
+ 
+        <%#= fields_for :passanger, @booking.passangers do |passanger_form| %>
+        <%#= passanger_form.text_field :name %>
+        <%#= passanger_form.text_field :email %>
+        <%# end %>
+
+<%= f.submit %>
+<% end %>
+
+  
